@@ -1,0 +1,92 @@
+.navbar {
+    background-color: #0079bf;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .sidebar {
+    width: 200px;
+    background-color: #34495e;
+    color: white;
+    padding: 15px;
+    height: 100vh;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    margin: 10px 0;
+  }
+  
+  .sidebar ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .sidebar ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  .add-board input, .add-board button {
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .board {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: 1;
+  }
+  
+  .lists-container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .list {
+    background-color: #f4f5f7;
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px;
+  }
+  
+  .cards-container {
+    min-height: 50px;
+    padding: 10px;
+    background-color: #ebecf0;
+    border-radius: 5px;
+  }
+  
+  .card {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  
+  .add-card-form input, .add-card-form button {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .main-content {
+    display: flex;
+    height: 100%;
+    flex-grow: 1;
+  }
+  
