@@ -1,32 +1,53 @@
 import React, { useState } from "react";
+
+import { useParams } from "react-router-dom";
 import List from "./List";
-import { DragDropContext } from "react-beautiful-dnd";
 
-export default function Board() {
-    const [lists, setLists] = useState([
-        { id: 1, title: "To Do" },
-        { id: 2, title: "Doing" },
-    ]);
+export default function Board({
+    selectedBoard,
+    setSelectedBoard,
+    boards,
+    setBoards,
+}) {
+    const [newListName, setNewListName] = useState("");
 
-    const addList = (title) => {
-        setLists([...lists, { id: lists.length + 1, title }]);
-    };
+    const handleAddButton = () => {
+        const newList = {
+            id: selectedBoard.lists.length + 1,
+            title: newListName,
+            cards: [],
+        };
 
-    const onDragEnd = (result) => {
-        // Logic to handle drag and drop between lists
+        const newBoards = JSON.parse(JSON.stringify(boards));
+
+        const index = newBoards.findIndex(
+            (board) => board.id === selectedBoard.id
+        );
+
+        newBoards[index].lists.push(newList);
+
+        setSelectedBoard(newBoards[index]);
+        setBoards(newBoards);
+        setNewListName("");
     };
 
     return (
         <div className="board">
-            <h2>Board</h2>
-            <DragDropContext onDragEnd={onDragEnd}>
-                <div className="lists-container">
-                    {lists.map((list) => (
-                        <List key={list.id} title={list.title} />
+            <h2>{selectedBoard.name}</h2>
+
+            <div className="lists-container">
+                <ul>
+                    {selectedBoard?.lists?.map((list, index) => (
+                        <List key={list.id} list={list} />
                     ))}
-                </div>
-            </DragDropContext>
-            <button onClick={() => addList("New List")}>Add List</button>
+                </ul>
+            </div>
+            <input
+                type="text"
+                value={newListName}
+                onChange={(e) => setNewListName(e.target.value)}
+            />
+            <button onClick={handleAddButton}>Add List</button>
         </div>
     );
 }

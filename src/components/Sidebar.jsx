@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Sidebar({ boards, addBoard }) {
+export default function Sidebar({
+    boards,
+    addBoard,
+    selectedBoard,
+    setSelectedBoard,
+}) {
     const [newBoardName, setNewBoardName] = useState("");
 
     const handleAddBoard = () => {
@@ -17,7 +22,9 @@ export default function Sidebar({ boards, addBoard }) {
             <ul>
                 {boards.map((board) => (
                     <li key={board.id}>
-                        <Link to={`/board/${board.id}`}>{board.name}</Link>
+                        <button onClick={() => setSelectedBoard(board)}>
+                            {board.name}
+                        </button>
                     </li>
                 ))}
             </ul>
